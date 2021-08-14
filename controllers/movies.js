@@ -5,19 +5,36 @@ const getAllMovies = (request, response) => {
 }
 
 const getMovieByDirector = (request, response) => {
-  const { movieName } = request.params
+  const { movieName } = request.params.toLowerCase
 
-  const foundMovie = movies.filter((movie) => movie.directors === movieName)
+  const foundMovie = movies.filter((movie) => movie.directors.toLowerCase === movieName)
 
   return response.send(foundMovie)
 }
 
 const getMovieByTitle = (request, response) => {
-  const { titleName } = request.params
+  const query = request.params.query.toLowerCase()
 
-  const foundTitle = movies.filter((movie) => movie.title === titleName)
+  const foundTitle = movies.filter(movie => movie.title.toLowerCase().includes(query))
 
   return response.send(foundTitle)
 }
 
-module.exports = { getAllMovies, getMovieByDirector, getMovieByTitle }
+const saveNewMovie = (request, response) => {
+  const {
+    title, directors, releaseDate, rating, runTime, genres
+  } = request.body
+
+  if (!title || !directors || !releaseDate || !rating || !runTime || !genres) {
+    return response.status(400).send('Missing some required fields.')
+  }
+  const newMovie = {
+    title, directors, releaseDate, rating, runTime, genres
+  }
+
+  movies.push(newMovie)
+
+  return response.status(201).send(newMovie)
+}
+
+module.exports = { getAllMovies, getMovieByDirector, getMovieByTitle, saveNewMovie }

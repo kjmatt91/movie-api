@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const movies = require('../movies')
 
 const getAllMovies = (request, response) => {
@@ -5,15 +6,19 @@ const getAllMovies = (request, response) => {
 }
 
 const getMovieByDirector = (request, response) => {
-  const { movieName } = request.params.toLowerCase
+  console.log('directors', request.params.directors)
+  const { directorName } = request.params.directors.toLowerCase()
 
-  const foundMovie = movies.filter((movie) => movie.directors.toLowerCase === movieName)
+  const foundMovie = movies.filter((movie) => movie.directors.map(director => {
+    director.toLowerCase().includes(directorName)
+  }))
 
   return response.send(foundMovie)
 }
 
 const getMovieByTitle = (request, response) => {
-  const query = request.params.query.toLowerCase()
+  console.log(request.params.title)
+  const query = request.params.title.toLowerCase()
 
   const foundTitle = movies.filter(movie => movie.title.toLowerCase().includes(query))
 

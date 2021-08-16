@@ -7,10 +7,10 @@ const getAllMovies = (request, response) => {
 
 const getMovieByDirector = (request, response) => {
   console.log('directors', request.params.directors)
-  const { directorName } = request.params.directors.toLowerCase()
+  const directorFound = request.params.directors.toLowerCase()
 
   const foundMovie = movies.filter((movie) => movie.directors.map(director => {
-    director.toLowerCase().includes(directorName)
+    director.toLowerCase().includes(directorFound)
   }))
 
   return response.send(foundMovie)

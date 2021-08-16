@@ -9,7 +9,7 @@ app.get('/movies', getAllMovies)
 
 app.get('/movies/:title', getMovieByTitle ? getMovieByTitle : getMovieByDirector)
 
-app.get('/movies/:directors', getMovieByDirector)
+app.get('/movies/directors/:directors', getMovieByDirector)
 
 app.post('/movies', bodyParser.json(), saveNewMovie)
 

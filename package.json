@@ -1,0 +1,31 @@
+{
+  "name": "movie-api",
+  "version": "1.0.0",
+  "description": "In the initial commit to this project, you have been provided with data for the AFI Top 100 movies. Your task is to implement an Express driven REST API that allows a user to retrieve this data. Your API should support three requests types 1) A request for all data, 2) A request for all movies by a director, 3) A request for a movie by title. Note that you should support partial matches as shown below.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --format codeframe .",
+    "lint:fix": "eslint --fix --format codeframe .",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjmatt91/movie-api.git"
+  },
+  "keywords": [],
+  "author": "Kaleb",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kjmatt91/movie-api/issues"
+  },
+  "homepage": "https://github.com/kjmatt91/movie-api#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}

@@ -7,7 +7,7 @@ const port = 8000
 
 app.get('/movies', getAllMovies)
 
-app.get('/movies/:title', getMovieByTitle ? getMovieByTitle : getMovieByDirector)
+app.get('/movies/:title', getMovieByTitle)
 
 app.get('/movies/directors/:directors', getMovieByDirector)
 
